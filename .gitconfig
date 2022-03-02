@@ -84,6 +84,9 @@
 	# a.k.a. ‘delete merged’
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
+	# Remove local branches that have gone remotes.
+	dg = "!git fetch -p && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done"
+
 	# List contributors with number of commits.
 	contributors = shortlog --summary --numbered
 
